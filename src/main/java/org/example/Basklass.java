@@ -5,6 +5,7 @@ public class Basklass {
     private String title;
     private boolean isAvailable;
 
+
     public Basklass(int id, String title, boolean isAvailable) {
         this.id = id;
         this.title = title;
