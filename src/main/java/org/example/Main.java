@@ -1,8 +1,15 @@
 package org.example;
 
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
+import kong.unirest.Unirest;
+import kong.unirest.HttpResponse;
+import kong.unirest.UnirestException;
+import java.nio.file.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import com.google.gson.Gson;
 
 public class Main {
     static void main() {
@@ -10,6 +17,8 @@ public class Main {
         String booksUrl = "http://10.151.168.5:3138/books";
         String magazineUrl = "http://10.151.168.5:3138/magazines";
         Gson gson = new Gson();
+
+        Library Books = new Library();
 
         //Läser input
         Scanner scanner = new Scanner(System.in);
@@ -39,7 +48,16 @@ public class Main {
 
             //Hantera val
         if(choice == 1){
-            System.out.println("option 1");
+            try{
+                HttpResponse<String> response1 = Unirest.get(booksUrl).asString();
+                String book = response1.getBody();
+
+                Books.addBook(book);
+
+                System.out.println(Books.Books);
+            }catch (UnirestException e){
+                IO.println("fel" + e.getLocalizedMessage());
+            }
         } else if (choice == 2) {
             System.out.println("option 2");
         } else if (choice == 3) {
