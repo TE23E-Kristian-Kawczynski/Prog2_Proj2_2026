@@ -11,4 +11,15 @@ public class Basklass {
         this.title = title;
         this.isAvailable = isAvailable;
     }
+
+    public int getId(){
+        return id;
+    }
+    public String getTitle(){
+        return title;
+    }
+    public boolean getIsAvailable(){
+        return isAvailable;
+    }
+
 }

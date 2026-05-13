@@ -11,6 +11,27 @@ public class Book extends Basklass{
         this.author = author;
         this.genre = genre;
         this.pages = pages;
-
     }
-}
+
+    public String getAuthor(){
+        return author;
+    }
+    public String getGenre(){
+        return genre;
+    }
+    public int getPages(){
+        return pages;
+    }
+
+    @Override
+    public String toString(){
+        return "Book{" +
+            "id=" + getId()+
+                "\n title=" + getTitle() +
+                "\n author=" + getAuthor() +
+                "\n genre=" + getGenre() +
+                "\n pages=" + getPages() +
+                "\n isAvailable=" + getIsAvailable() +
+                "\n }" + "\n";
+        }
+    }

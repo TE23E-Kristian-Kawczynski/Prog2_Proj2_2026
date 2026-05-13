@@ -25,6 +25,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int choice = 0;
 
+        int id;
+        String title;
+        boolean isAvailable;
+        String author;
+        String genre;
+        int pages;
+
         while(true){
         //Meny
         System.out.println("""
@@ -47,7 +54,7 @@ public class Main {
                 continue;
             }
 
-            //Hantera val
+            //Hantera val + option 1 och 2 tar in från server och sparar i arraylist
         if(choice == 1){
             try{
                 HttpResponse<String> getBooks = Unirest.get(booksUrl).asString();
@@ -66,17 +73,52 @@ public class Main {
             }catch (UnirestException e){
                 IO.println("fel" + e.getLocalizedMessage());
             }
+            //Skriva ut listor
         } else if (choice == 3) {
             System.out.println("Skriver ut böcker:");
             System.out.println(BooksList.Books);
         } else if (choice == 4) {
             System.out.println("Skriver ut tidningar:");
             System.out.println(MagazinesList.Magazines);
+            //Användare lägger till egna i listor
 
         } else if (choice == 5) {
-            System.out.println("option 5");
+            System.out.println("Skapa book");
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange titel: ");
+                title = scanner.nextLine();
+                break;
+            }
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange författare: ");
+                author = scanner.nextLine();
+                break;
+            }
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange genre: ");
+                genre = scanner.nextLine();
+                break;
+            }
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange antal sidor: ");
+                pages = scanner.nextInt();
+                break;
+            }
+
+            Book ownbook = new Book(1000, title, true, author, genre, pages);
+            BooksList.addBook(String.valueOf(ownbook));
+            System.out.println(BooksList.Books);
         } else if (choice == 6) {
             System.out.println("option 6");
+
         } else if (choice == 7) {
             System.exit(0);
         } else {
