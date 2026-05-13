@@ -31,6 +31,9 @@ public class Main {
         String author;
         String genre;
         int pages;
+        int issueNumber;
+        String category;
+        int publishedYear;
 
         while(true){
         //Meny
@@ -115,9 +118,41 @@ public class Main {
 
             Book ownbook = new Book(1000, title, true, author, genre, pages);
             BooksList.addBook(String.valueOf(ownbook));
-            System.out.println(BooksList.Books);
+            //System.out.println(BooksList.Books);
         } else if (choice == 6) {
-            System.out.println("option 6");
+            System.out.println("Skapa Tidning");
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange titel: ");
+                title = scanner.nextLine();
+                break;
+            }
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange Issuenumber: ");
+                issueNumber = scanner.nextInt();
+                break;
+            }
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange kategori: ");
+                category = scanner.nextLine();
+                break;
+            }
+
+            while(true){
+                scanner.nextLine();
+                System.out.println("Ange published year: ");
+                publishedYear = scanner.nextInt();
+                break;
+            }
+
+            Magazine ownMagazine = new Magazine(1001, title, true,  issueNumber, category, publishedYear);
+            MagazinesList.addMagazine(String.valueOf(ownMagazine));
+            //System.out.println(MagazinesList.Magazines);
 
         } else if (choice == 7) {
             System.exit(0);

@@ -12,4 +12,26 @@ public class Magazine extends Basklass{
         this.category = category;
         this.publishedYear = publishedYear;
     }
+
+    public int getIssueNumber(){
+        return issueNumber;
+    }
+    public String getCategory(){
+        return category;
+    }
+    public int getPublishedYear(){
+        return publishedYear;
+    }
+
+    @Override
+    public String toString(){
+        return "Magazine{" +
+                "id=" + getId()+
+                "\n title=" + getTitle() +
+                "\n Issuenumber=" + getIssueNumber() +
+                "\n Category=" + getCategory() +
+                "\n Published year=" + getPublishedYear() +
+                "\n isAvailable=" + getIsAvailable() +
+                "\n }" + "\n";
+    }
 }
