@@ -8,5 +8,6 @@ public class Library {
     ArrayList<String> Magazine = new ArrayList<String>();
 
     public void addBook(String book) {
+        Books.add(book);
     }
 }
