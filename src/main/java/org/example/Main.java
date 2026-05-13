@@ -54,9 +54,6 @@ public class Main {
                 String book = getBooks.getBody();
 
                 BooksList.addBook(book);
-
-
-                System.out.println(BooksList.Books);
             }catch (UnirestException e){
                 IO.println("fel" + e.getLocalizedMessage());
             }
@@ -66,15 +63,16 @@ public class Main {
                 String magazine = getMagazine.getBody();
 
                 MagazinesList.addMagazine(magazine);
-
-                System.out.println(MagazinesList.Magazines);
             }catch (UnirestException e){
                 IO.println("fel" + e.getLocalizedMessage());
             }
         } else if (choice == 3) {
-            System.out.println("option 3");
+            System.out.println("Skriver ut böcker:");
+            System.out.println(BooksList.Books);
         } else if (choice == 4) {
-            System.out.println("option 4");
+            System.out.println("Skriver ut tidningar:");
+            System.out.println(MagazinesList.Magazines);
+
         } else if (choice == 5) {
             System.out.println("option 5");
         } else if (choice == 6) {
