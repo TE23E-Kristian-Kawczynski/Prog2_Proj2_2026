@@ -18,7 +18,8 @@ public class Main {
         String magazineUrl = "http://10.151.168.5:3138/magazines";
         Gson gson = new Gson();
 
-        Library Books = new Library();
+        Library BooksList = new Library();
+        Library MagazinesList = new Library();
 
         //Läser input
         Scanner scanner = new Scanner(System.in);
@@ -49,18 +50,27 @@ public class Main {
             //Hantera val
         if(choice == 1){
             try{
-                HttpResponse<String> response1 = Unirest.get(booksUrl).asString();
-                String book = response1.getBody();
+                HttpResponse<String> getBooks = Unirest.get(booksUrl).asString();
+                String book = getBooks.getBody();
 
-                Books.addBook(book);
+                BooksList.addBook(book);
 
 
-                System.out.println(Books.Books);
+                System.out.println(BooksList.Books);
             }catch (UnirestException e){
                 IO.println("fel" + e.getLocalizedMessage());
             }
         } else if (choice == 2) {
-            System.out.println("option 2");
+            try{
+                HttpResponse<String> getMagazine = Unirest.get(magazineUrl).asString();
+                String magazine = getMagazine.getBody();
+
+                MagazinesList.addMagazine(magazine);
+
+                System.out.println(MagazinesList.Magazines);
+            }catch (UnirestException e){
+                IO.println("fel" + e.getLocalizedMessage());
+            }
         } else if (choice == 3) {
             System.out.println("option 3");
         } else if (choice == 4) {
