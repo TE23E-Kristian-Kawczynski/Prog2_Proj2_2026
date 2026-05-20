@@ -32,4 +32,5 @@ public class Library {
     public void addOwnMagazine(Magazine magazine) {
         magazines.add(magazine);
     }
+
 }
