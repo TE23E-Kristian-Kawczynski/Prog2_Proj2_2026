@@ -61,28 +61,28 @@ public class Main {
         if(choice == 1){
             try{
                 HttpResponse<String> getBooks = Unirest.get(booksUrl).asString();
-                String book = getBooks.getBody();
-
-                BooksList.addBook(book);
+                String books_json = getBooks.getBody();
+                IO.println(books_json);
+                BooksList.addBook(books_json);
             }catch (UnirestException e){
                 IO.println("fel" + e.getLocalizedMessage());
             }
         } else if (choice == 2) {
             try{
                 HttpResponse<String> getMagazine = Unirest.get(magazineUrl).asString();
-                String magazine = getMagazine.getBody();
+                String magazines_json = getMagazine.getBody();
 
-                MagazinesList.addMagazine(magazine);
+                MagazinesList.addMagazine(magazines_json);
             }catch (UnirestException e){
                 IO.println("fel" + e.getLocalizedMessage());
             }
             //Skriva ut listor
         } else if (choice == 3) {
             System.out.println("Skriver ut böcker:");
-            System.out.println(BooksList.Books);
+            System.out.println(BooksList.books);
         } else if (choice == 4) {
             System.out.println("Skriver ut tidningar:");
-            System.out.println(MagazinesList.Magazines);
+            System.out.println(MagazinesList.magazines);
             //Användare lägger till egna i listor
 
         } else if (choice == 5) {
@@ -117,7 +117,7 @@ public class Main {
             }
 
             Book ownbook = new Book(1000, title, true, author, genre, pages);
-            BooksList.addBook(String.valueOf(ownbook));
+            BooksList.addOwnBook(ownbook);
             //System.out.println(BooksList.Books);
         } else if (choice == 6) {
             System.out.println("Skapa Tidning");
@@ -151,7 +151,7 @@ public class Main {
             }
 
             Magazine ownMagazine = new Magazine(1001, title, true,  issueNumber, category, publishedYear);
-            MagazinesList.addMagazine(String.valueOf(ownMagazine));
+            MagazinesList.addOwnMagazine(ownMagazine);
             //System.out.println(MagazinesList.Magazines);
 
         } else if (choice == 7) {
